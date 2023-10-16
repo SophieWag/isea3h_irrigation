@@ -1,0 +1,76 @@
+# Download/setup required data
+  To create the dataset that is used in this study, please follow the documentation at https://github.com/PIK-LPJmL to get LPJmL up and running and find the source code in this zenodo archive https://doi.org/10.5281/zenodo.4297953.
+  
+# Input: 
+- LPJmL simulation dataset containing information on (final_data.RData):
+   - irrFrac: irrigation fraction of each grid cell 
+   - lat/lon: latitude (-90..90)/longitude (-180..180) of each lpjml grid cell
+   - lpjGDPpc: GDP per capita (2011 US dollars/cap) for each lpj-grid
+   - median_increase: median increase in productivity (delta gC/m2) in each gridcell across all crops per year
+   - popdens: population density (cap/m2) starting 1901 to 2005
+   - globalIrrigArea: Mha
+   - discharge_landuse: (hm)3/d == (1.000.000 m3)/d
+   - prec_landuse: monthly precipitation (mm/month)
+   - evap_landuse: amount of water (fed by precipitation) that evaporates on bare soil (mm/month)
+   - interc_landuse: amount of water (fed by precipitation) that evaporates from plants leaves (mm/month)
+   
+- Country data (countryData_67420.RData):
+  - the LPJmL country id (COW) for each grid cell, 
+  - the LPJmL regional code (REG),
+  - the more of less official english Countryname, 
+  - international 3 character ISO code
+  
+# Settings (Run 00_settings)
+Load required R packages and specify the required input/output paths
+
+# Dataframe functions (Run 01a_dataframe_ll and 01b_dataframe_dgg)
+Defines functions to create the working dataframes for both global grids based on the input data
+
+# (Optional) Prepare data (Run 02_data_prep)
+Creates the dataset final.RData and the working dataframes for the Longitude-Latitude grid and the ISEA3H grid. This takes a long time to run. Alternatively, you may use the data files provided in the data folder. 
+
+
+# Cross-validation (Run 03a_rf_ll_cv and 03b_rf_dgg_cv)
+Performs cross-validation to determine the hyperparameters ntree and mtry for the classification and regression random forest for both grid choices
+
+# Plot CV results (Run 03c_cv_plot)
+Plots the cross-validation results and saves the graphs in the result folder.
+
+# Random forest models (Run 04a_rf_ll and 04b_rf_dgg)
+Defines functions that create random forest models for both grid choices
+  - Longitude-latitude grid (rf4 - classification, rf5 - regression)
+  - ISEA3H grid (rf6 - classification, rf7 - regression)
+
+# Prediction (Run 05_predict)
+Runs the random forest functions and creates the final predition of the test data sets.
+Defines also the differences between actual and predicted irrigation fraction and saves all results in text files.
+Creates binned figures that graph the actual against the predicted irrigation fraction. 
+
+# Difference Plot (Run 06_diff_plot)
+Creates plots that show global difference patterns between actual and predicted irrigation fraction. The final_data.RData has to be loaded into the environment. 
+
+# Errors (Run 07_error_calc)
+Computes the normalized root mean squared prediction errors of both grid choices. Creates and saves table with all error values. 
+
+# Variable importance (Run 08_varimp)
+Creates variable importance plots of random forest models. The models have to be loaded into the environment (rf4, rf5, rf6, rf7).
+
+# Partial dependence (Run 09_pdp_calc)
+#pdp_calc(rf4)
+Defines function that computes the partial dependence on of the random forest models. The function input parameter is the random forest model for which the partial dependencies are wished to be computed. The function saves a text file with the results.
+
+# Partial dependence plots (Run 09b_pdp_plot)
+Plots all partial dependencies of all predictors and all random forest models and saves the graphs in the result folder. 
+
+# Centercount ISEA3H grid (Run 10_centercount)
+Creates plot that contains the count of grid cell centers of the original lon-lat grid that fall into each hexagonal grid cell of the ISEA3H grid. Saves the graph in the result folder. The final_data.RData has to be loaded into the environment. 
+
+# Pearson correlation coefficient and variance inflation factor (Run 11_pearson_vif)
+Computes the Pearson correlation coefficient and the VIF for all predictor variables and saves the result as text files in the results folder. 
+
+# Descriptives plots (Run 12_desc)
+Computes descriptive statistics of the data and plots some summary graphs. All results are saved in the result folder. The final_data.RData has to be loaded into the environment. 
+
+
+License AGPL3 (see LICENSE file in code Folder)
+  
