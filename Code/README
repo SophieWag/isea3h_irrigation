@@ -1,5 +1,7 @@
+# The code and the data used in this project can be found in this zenodo archive: https://doi.org/10.5281/zenodo.10012830. 
+
 # Download/setup required data
-  To create the dataset that is used in this study, please follow the documentation at https://github.com/PIK-LPJmL to get LPJmL up and running and find the source code in this zenodo archive https://doi.org/10.5281/zenodo.4297953.
+  To recreate the dataset that is used in this study, please follow the documentation at https://github.com/PIK-LPJmL to get LPJmL up and running and find the source code in this zenodo archive https://doi.org/10.5281/zenodo.4297953.
   
 # Input: 
 - LPJmL simulation dataset containing information on (final_data.RData):
