@@ -1,6 +1,7 @@
 ---
-</h1> Global Irrigation Expansion -- ISEA3H Grid </h1>
-</h2> Sophie Wagner </h2>
+# Global Irrigation Expansion -- ISEA3H Grid 
+
+# Sophie Wagner 
 
 
 
