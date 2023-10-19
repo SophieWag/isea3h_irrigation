@@ -15,7 +15,7 @@ This repository contains R Code to conduct a simple statistical analysis that mo
 
 
 ````{r, echo = FALSE}
- ![]([irrigation.gif](https://github.com/SophieWag/isea3h_irrigation/blob/35381f53bc2b71b68e6f8f64b58590eea09e676d/irrigation.gif))
+ ![](https://github.com/SophieWag/isea3h_irrigation/blob/35381f53bc2b71b68e6f8f64b58590eea09e676d/irrigation.gif)
 ````
 
 
