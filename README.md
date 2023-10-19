@@ -14,7 +14,7 @@ This repository contains R Code to conduct a simple statistical analysis that mo
 ## Data
 
 
-````{r, echo = FALSE}
+````{r, include = FALSE}
  ![](irrigation.gif)
 ````
 
