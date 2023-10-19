@@ -1,15 +1,12 @@
 ---
-Global Irrigation Expansion -- ISEA3H Grid
-Sophie Wagner
-October 19, 2023
+</h1> Global Irrigation Expansion -- ISEA3H Grid </h1>
+</h2> Sophie Wagner </h2>
+
 
 
 
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10012830.svg)](https://doi.org/10.5281/zenodo.10012830)
 
