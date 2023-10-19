@@ -1,11 +1,10 @@
 ---
-title: Global Irrigation Expansion -- ISEA3H Grid
-author: Sophie Wagner
-date: October 19, 2023
-output:
-  prettydoc::html_pretty:
-    theme: caymen
-    highlight: github
+Global Irrigation Expansion -- ISEA3H Grid
+Sophie Wagner
+October 19, 2023
+
+
+
 ---
 
 ```{r setup, include=FALSE}
