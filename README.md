@@ -1,10 +1,5 @@
 ---
-# Global Irrigation Expansion -- ISEA3H Grid 
-
-# Sophie Wagner 
-
-
-
+# Global Irrigation Expansion - ISEA3H Grid 
 
 ---
 
@@ -20,7 +15,7 @@ This repository contains R Code to conduct a simple statistical analysis that mo
 
 
 ```{r}
-
+![](irrigation.gif)
 ````
 
 
