@@ -12,7 +12,7 @@ This repository contains R Code to conduct a simple statistical analysis that mo
 
 
 ## Data
-The data reflects the fraction of area irrigated in each grid cell between 1902 and 2005 and is based on the global Historical Irrigation Dataset (HID) developed by Siebert et al. (2015).
+The data reflects the fraction of area irrigated in each grid cell between 1902 and 2005 and is based on the global Historical Irrigation Dataset (HID), developed by Siebert et al. (2015). The ISEA3H discrete global grid is constructed using the dggridR package, created by Barnes and Sahr (2017).
 
 
  ![irrigation.gif](irrigation.gif)
@@ -26,6 +26,8 @@ Please find the detailed README file in the Code folder to get instructions on h
 
 ## References 
 Siebert, S., Kummu, M., Porkka, M., Döll, P., Ramankutty, N., and Scanlon, B. R.: A global data set of the extent of irrigated land from 1900 to 2005, Hydrol. Earth Syst. Sci., 19, 1521–1545, https://doi.org/10.5194/hess-19-1521-2015, 2015.
+
+Richard Barnes and Kevin Sahr (2017). dggridR: Discrete Global Grids for R. R package version 2.0.4. "https://github.com/r-barnes/dggridR/" doi:10.5281/zenodo.1322866
 
 
 
