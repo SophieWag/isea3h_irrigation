@@ -5,14 +5,14 @@ library(ggforce)
 library(pmr)
 #final data has to be loaded 
 
-# Figure 4a
+# Figure 3a
 data = diff_pred
 range <- seq(-0.5,0.5,0.05)
 brks=range
 mycolors <- colorRampPalette(rev(brewer.pal(11, "Spectral")))(length(range)-1)
 palette=mycolors
 legendtitle = ""
-png(paste0(resultFol,"fig04a.png"), width = 2000, height = 1000, units = "px", res = 400, pointsize = 4)
+png(paste0(resultFol,"fig03a.png"), width = 2000, height = 1000, units = "px", res = 400, pointsize = 4)
 if (!length(palette) == (length(brks) - 1)) {palette <- colorRampPalette(RColorBrewer::brewer.pal(9,palette))(length(brks) - 1)}
 ires <- 2 # inverse resolution (set to 2 for 0.5*0.5 degrees)
 legendticks <- seq(from = 0, to = 100, length.out = length(brks))
@@ -33,14 +33,10 @@ fields::image.plot(legend.only = TRUE, zlim = range(brks), col = palette,
 dev.off()
 
 
-# Figure 4b
-dgg_test$diff <- as.numeric(diff_dgg)
-range <- seq(-0.5,0.5,0.05)
-grid <- dgcellstogrid(dggs,dgg_test$CellID,frame=TRUE,wrapcells=TRUE)
-grid <- merge(grid,dgg_test,by.x="cell",by.y="CellID")
-
+# Figure 3b
+range <- seq(-0.6,0.6,0.05)
 mycolors <- colorRampPalette(rev(brewer.pal(11, "Spectral")))(length(range)-1)
-png(paste0(resultFol,"fig04b.png"),width = 2000, height = 1000, units="px",res=400,pointsize = 4)
+png(paste0(resultFol,"fig03b.png"),width = 2000, height = 1000, units="px",res=400,pointsize = 4)
 ggplot(data = grid) +
   geom_polygon(aes(x=long, y=lat, group=group, fill=diff)) +
   scale_size_binned(breaks = range, guide = guide_bins(show.limits = T)) +
@@ -48,11 +44,8 @@ ggplot(data = grid) +
   binned_scale(aesthetics = "fill", scale_name = "custom", 
                palette = ggplot2:::binned_pal(scales::manual_pal(values = mycolors)),
                guide = "bins",
-               breaks = range, limits = c(-0.5, 0.5), show.limits = T)+
+               breaks = range, limits = c(-0.6, 0.6), show.limits = T)+
   theme(legend.position = "none")
 dev.off()
 
 
-
-
-  

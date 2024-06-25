@@ -30,6 +30,8 @@ codeFol = "..."
 
 # ===== Base dataset ======= #
 # created by the preparation function 
+
+iFol = "..."
 load(file=paste0(iFol,"final_data.RData"))
 
 

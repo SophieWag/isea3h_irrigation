@@ -5,10 +5,6 @@ dggridR_sampling <- function(res){
   # ==== Packages === #
   library(dggridR)
   
-  if(res == 7){
-    spacing = 100
-  }else{print("We worked with resolution 7. Please alter the function if you want to pick a different resolution.")}
-  
   for(t in 1:105){
     Dgrid <- paste("DGrid", t, sep = "")
     
@@ -16,7 +12,7 @@ dggridR_sampling <- function(res){
     Test_Data <- as.data.frame(Test_Data)
     
     #Project data to hexagonal cells
-    dggs  <- dggridR::dgconstruct(res = 7, metric=FALSE, resround='nearest')
+    dggs  <- dggridR::dgconstruct(res = res, metric=FALSE, resround='nearest')
     
     #Get the cell centers for the data that the observations point would fall into
     Test_Data$cell <- dggridR::dgGEO_to_SEQNUM(dggs,Test_Data$lon,Test_Data$lat)$seqnum

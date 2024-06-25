@@ -101,10 +101,11 @@ preparation <- function(iFol,oFol){
   write.table(ll_val,paste0(oFol,"ll_val.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
   write.table(ll_test,paste0(oFol,"ll_test.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
   
-  ### Set up training, validation and test dataframes for the isea3h grid
+  ### Set up training, validation and test dataframes for the isea3h grid system
   data <- dggridR_sampling(7)
+  #data <- dggridR_sampling(8)
+  #data <- dggridR_sampling(9)
   
-  #
   dgg_train <- data[-(which(data$Year == 1901 |data$Year == 2000 | data$Year == 2001 | data$Year == 2002 | data$Year == 2003 | data$Year == 2004)),]
   dgg_train <- as.data.frame(dgg_train)
   dgg_train$Irrigation <- as.numeric(dgg_train$Irrigation)
@@ -130,7 +131,17 @@ preparation <- function(iFol,oFol){
   dgg_val$Precipitation <- as.numeric(dgg_val$Precipitation)
   dgg_val$MedInc <- as.numeric(dgg_val$MedInc)
   
-  write.table(dgg_train,paste0(oFol,"dgg_train.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
-  write.table(dgg_val,paste0(oFol,"dgg_val.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
-  write.table(dgg_test,paste0(oFol,"dgg_test.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
+  write.table(dgg_train,paste0(oFol,"dgg_train7.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
+  write.table(dgg_val,paste0(oFol,"dgg_val7.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
+  write.table(dgg_test,paste0(oFol,"dgg_test7.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
+  
+  write.table(dgg_train,paste0(oFol,"dgg_train8.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
+  write.table(dgg_val,paste0(oFol,"dgg_val8.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
+  write.table(dgg_test,paste0(oFol,"dgg_test8.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
+  
+  write.table(dgg_train,paste0(oFol,"dgg_train9.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
+  write.table(dgg_val,paste0(oFol,"dgg_val9.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
+  write.table(dgg_test,paste0(oFol,"dgg_test9.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
+  
+  
   

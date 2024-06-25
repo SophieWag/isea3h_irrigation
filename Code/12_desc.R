@@ -2,7 +2,7 @@
 #final.RData has to be loaded
 #Figure A2b: ISEA3H histogram
 png(paste0(resultFol,"figA2b.png"), width = 2000, height = 1000, units = "px", res = 400, pointsize = 4)
-g2 <- ggplot(dgg_test, aes(x=Irrigation)) + geom_histogram(color = "#280C4D", fill = "#280C4D", bins = 50)
+g2 <- ggplot(dgg_test, aes(x=Irrigation)) + geom_histogram(color = "#3288BD", fill = "#3288BD", bins = 50)
 g2 <- g2 + theme_minimal() + labs(x="Irrigation Fraction", y = "Count")
 g2
 dev.off()
@@ -80,16 +80,6 @@ ts <- cbind(t, mean_irr, mean_gdp, mean_popdens,
             mean_eva)
 ts <- as.data.frame(ts)
 
-#png(paste0(resultFol,"Mean_Irr.png"))
-#p <- ggplot(ts)
-#p <- p +geom_line(aes(x=t, y=mean_irr), colour = "#000004")+
-#  xlab("Year")+ylab("Global Mean Irrigation Fraction")+theme_minimal()+
-#  theme(axis.title.x = element_text(colour="black", size=14, face="bold"),
-#        axis.title.y = element_text(colour="black", size=14, face="bold"),
-#        axis.text.x = element_text(colour="black", size=14),
-#        axis.text.y = element_text(colour="black", size=14))
-#print(p)
-#dev.off()
 png(paste0(resultFol,"figA1a.png"))
 p <- ggplot(ts)
 p <- p +geom_line(aes(x=t, y=mean_popdens), colour = "#280C4D")+
@@ -223,12 +213,12 @@ df <- df[order(df$time),]
 df$class <- rep(c("gdp_mis","gdp_high","gdp_highmiddle","gdp_lowmiddle","gdp_low"),105)
 
 
-png(paste0(resultFol,"figA3.png"))
+png(paste0(resultFol,"figA3.png"), width = 900, height = 400)
 p<-ggplot(df, aes(time, gdp, fill = class)) + geom_col(position = "dodge")
 p <- p +geom_bar(stat = "identity", aes(fill = class))+theme_bw()+xlab("Year")+
-  ylab("Count")+theme_bw()+ theme(
-    axis.title.x = element_text(colour="black", size=14, face="bold"),
-    axis.title.y = element_text(colour="black", size=14, face="bold"),
+  ylab("Count")+theme_minimal()+ theme(
+    axis.title.x = element_text(colour="black", size=14),
+    axis.title.y = element_text(colour="black", size=14),
     axis.text.x = element_text(colour="black", size=14),
     axis.text.y = element_text(colour="black", size=14),
     legend.key.size = unit(1, 'cm'), 
@@ -236,8 +226,9 @@ p <- p +geom_bar(stat = "identity", aes(fill = class))+theme_bw()+xlab("Year")+
     legend.key.width = unit(1, 'cm'), 
     legend.title = element_text(size=14), 
     legend.text = element_text(size=14))+
-  scale_fill_discrete(name = "Class",
-                      labels = c("High", "Upper Middle", "Low", "Lower Middle", "Missing"))+
+  scale_fill_manual(name = "",
+                      labels = c("High", "Upper Middle", "Low", "Lower Middle", "Missing"),
+                    values = c("#2B83BA" ,"#ABDDA4", "#FFFFBF", "#FDAE61" ,"#D7191C"))+
   scale_x_continuous(breaks = c(1900,1920,1950,1980,2005))+
   scale_y_continuous(breaks = c(0,20000,40000,60000,67420))
 
@@ -247,7 +238,8 @@ dev.off()
 
 # Figure A4
 data = ll_test$Irrigation
-range <- seq(0,1,0.01)
+data <- as.numeric(data)
+range <- seq(0,1,0.02)
 brks=range
 mycolors <- colorRampPalette(rev(brewer.pal(11, "Spectral")))(length(range)-1)
 palette=mycolors
@@ -265,9 +257,9 @@ extent <- raster::extent(c(-180, 180, -60, 90))
 par(bty = "n", oma = c(0,0,0,0), mar = c(0,0,0,3), xpd = T)
 raster::plot(ra, ext = extent, breaks = brks, col = palette, main = "",
              legend = FALSE, axes = FALSE, maxpixels = 720*360)
-fields::image.plot(legend.only = TRUE, zlim = range(brks), col = palette, 
-                   useRaster = FALSE, breaks = legendticks,
-                   lab.breaks = round(brks,2), legend.shrink = 0.8, 
-                   legend.args = list("", side = 3, font = 2, line = 1))
+#fields::image.plot(legend.only = TRUE, zlim = range(brks), col = palette, 
+ #                 useRaster = FALSE, breaks = legendticks,
+  #                 lab.breaks = round(brks,2), legend.shrink = 0.8, 
+   #                legend.args = list("", side = 1, font = 2, line = 1), horizontal = T)
 dev.off()
 

@@ -1,7 +1,7 @@
 #performs cross-validation for the classification and regression random forests (isea3h grid)
-dgg_train <- read.table(file=paste0(oFol,"dgg_train.txt"),header = TRUE,sep =",")
-dgg_val <- read.table(file=paste0(oFol,"dgg_val.txt"),header = TRUE,sep =",")
-dgg_test <- read.table(file=paste0(oFol,"dgg_test.txt"),header = TRUE,sep =",")
+dgg_train <- read.table(file=paste0(oFol,"dgg_train7.txt"),header = TRUE,sep =",")
+dgg_val <- read.table(file=paste0(oFol,"dgg_val7.txt"),header = TRUE,sep =",")
+dgg_test <- read.table(file=paste0(oFol,"dgg_test7.txt"),header = TRUE,sep =",")
 
 
 randomforest_dgg_cv <- function(){

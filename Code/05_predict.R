@@ -34,7 +34,6 @@ diff_pred <- as.data.frame(diff_pred)
 write.table(diff_pred,paste0(resultFol,"diff_pred_ll.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
 
 
-
 # ====== ISEA3H ===== #
 #creates classification and regression random forest models (rf6 and rf7)
 randomforest_dgg()
@@ -46,35 +45,37 @@ pred <- rep(0, nrow(pred_rf6$predictions))
 pred[which(pred_rf6$predictions[,2]>mean_pred)] <- 1
 
 #Predict on test data - regression
-pred_rf7 <- predict(rf7, dgg_test, num.trees = 4000)
+pred_rf7 <- predict(rf7, dgg_test, num.trees = 500)
 
 #Multiply results to obtain final prediction
 pred_dgg <- pred*pred_rf7$predictions
-write.table(pred_dgg,paste0(resultFol,"pred_dgg.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
+write.table(pred_dgg,paste0(resultFol,"pred_rf7_dgg8.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
 
 #Compute the difference between actual and predicted irrigation
 diff_dgg <- dgg_test$Irrigation-pred_dgg
 write.table(diff_dgg,paste0(resultFol,"diff_pred_dgg.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
 
 
-# Figure 3:  Observed vs Predicted 
-pred_ll <- read.table(file=paste0(resultFol,"pred_ll.txt"),header = TRUE,sep =",")
-pred_dgg <- read.table(file=paste0(resultFol,"pred_dgg.txt"),header = TRUE,sep =",")
+# Figure 2:  Observed vs Predicted 
+pred_ll <- read.table(file=paste0(iFol,"pred_ll.txt"),header = TRUE,sep =",")
+pred_dgg <- read.table(file=paste0(iFol,"pred_dgg.txt"),header = TRUE,sep =",")
 
-# Figure 3a
+# Figure 2a
 K <- cbind(ll_test,pred_ll)
+cols <- openColours("Spectral", 15)
+cols <- rev(cols)
 
-png(paste0(resultFol,paste0("fig3a.png")))
-p<- scatterPlot(K, x = "x", y = "Irrigation", method = "hexbin", cols = "inferno",
-            xlab = "Predicted values", ylab = "Actual values")
+png(paste0(resultFol,paste0("fig2a.png")))
+p<- scatterPlot(K, x = "x", y = "Irrigation", method = "hexbin", cols = cols,
+                xlab = "Predicted values", ylab = "Actual values")
 p
 dev.off()
 
-# Figure 3b
+# Figure 2b
 K <- cbind(dgg_test,pred_dgg)
 
-png(paste0(resultFol,paste0("fig3b.png")))
-p<- scatterPlot(K, x = "x", y = "Irrigation", method = "hexbin", cols = "inferno",
+png(paste0(resultFol,paste0("fig2b.png")))
+p<- scatterPlot(K, x = "pred_dgg", y = "Irrigation", method = "hexbin", cols = cols,
                 xlab = "Predicted values", ylab = "Actual values")
 p
 dev.off()

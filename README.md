@@ -1,5 +1,7 @@
 ---
-# Global Irrigation Expansion - ISEA3H Grid 
+title: Global Irrigation Expansion -- ISEA3H Grid System
+author: Sophie Wagner
+date: October 19, 2023
 
 ---
 
@@ -8,21 +10,26 @@
 
 
 ## About
-This repository contains R Code to conduct a simple statistical analysis that models global irrigation expansion in the 20th century as a function of biophysical and socioeconomic drivers. The methodological framework is based on stacked random forest models and aims to explore the role of the discrete global grid choice by comparing the standard longitude-latitude grid to the geodesic ISEA3H grid.   
+This repository contains R Code to conduct a simple statistical analysis that models global irrigation expansion in the 20th century as a function of biophysical and socioeconomic drivers. The methodological framework is based on stacked random forest models and aims to explore the role of the discrete global grid choice by comparing the standard longitude-latitude grid to the geodesic ISEA3H grid system.   
 
 
 ## Data
+The data is based in the Global Historical Irrigation Dataset (HID).
 
 
-````{r, echo = FALSE}
- ![](irrigation.gif)
-````
+
+![](irrigation.gif)
+
 
 
 ## Code
-The code folder contains functions to build the random forest models, to compute variable importance and partial dependence measures, to plot the predicted global irrigation patterns  and compare the two discrete global grids in regards to predictive accuracy. Finally, you can find code to produce descriptive plots and tables of the data. 
+The code folder contains functions to build the random forest models, to compute variable importance and partial dependence measures, to plot the predicted global irrigation patterns  and compare the two discrete global grid systems in regards to predictive accuracy. Finally, you can find code to produce descriptive plots and tables of the data. 
 
 Please find the detailed README file in the Code folder to get instructions on how to get the code up and running. 
+
+
+## References
+
 
 
 

@@ -1,8 +1,16 @@
 #creates classification and regression random forest model (isea3h grid)
-dgg_train <- read.table(file=paste0(oFol,"dgg_train.txt"),header = TRUE,sep =",")
-dgg_val <- read.table(file=paste0(oFol,"dgg_val.txt"),header = TRUE,sep =",")
-dgg_test <- read.table(file=paste0(oFol,"dgg_test.txt"),header = TRUE,sep =",")
+dgg_train <- read.table(file=paste0(iFol,"dgg_train9.txt"),header = TRUE,sep =",")
+dgg_val <- read.table(file=paste0(iFol,"dgg_val9.txt"),header = TRUE,sep =",")
+dgg_test <- read.table(file=paste0(iFol,"dgg_test9.txt"),header = TRUE,sep =",")
 
+dgg_train$Irr_Obs <- 0
+dgg_train$Irr_Obs[which(dgg_train$Irrigation != 0)] <- 1
+
+dgg_test$Irr_Obs <- 0
+dgg_test$Irr_Obs[which(dgg_test$Irrigation != 0)] <- 1
+
+dgg_val$Irr_Obs <- 0
+dgg_val$Irr_Obs[which(dgg_val$Irrigation != 0)] <- 1
 
 randomforest_dgg <- function(){
   
@@ -27,14 +35,14 @@ randomforest_dgg <- function(){
     
     
     ### Number of trees and mtry from cv results
-    index <- c(1000)
+    index <- c(500)
     oob <- vector()
     error <- vector()
     for(j in index){
       
       rf6 <<- ranger(Irr_Obs ~  Discharge + PopDens + Evaporation + MedInc + Precipitation + GDP, 
                     data = train_data, y = Irr_Obs ,num.trees = j, classification = TRUE, probability = TRUE, 
-                    min.node.size = 10, write.forest = TRUE, mtry = 5, importance = "impurity")
+                    min.node.size = 10, save.memory = TRUE ,write.forest = TRUE, mtry = 5, importance = "impurity")
       
       ### Out-Of-Bag error
       oob <- c(oob, rf6$prediction.error)

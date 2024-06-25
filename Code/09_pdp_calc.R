@@ -36,7 +36,7 @@ pdp_calc <- function(model){
                             grid.resolution = 100,
                             smooth = LOESS)
     prf_gdp <<- partial(model,pred.var = "GDP", 
-                            prob = F,
+                            prob = T,
                             grid.resolution = 100,
                             smooth = LOESS)
     K <- cbind(prf_popdens,prf_discharge,prf_evap,prf_prec,prf_medinc,prf_gdp)
@@ -75,7 +75,7 @@ pdp_calc <- function(model){
                         smooth = LOESS,
                         pred.fun = rf_predict)
     K <- cbind(prf_popdens,prf_discharge,prf_evap,prf_prec,prf_medinc,prf_gdp)
-    write.table(K,paste0(resultFol,"class_pdp.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
+    write.table(K,paste0(resultFol,"class_pdp_ll_area.txt"),col.names = TRUE,sep = ",",row.names = FALSE)
   }
 pdp_rf <- cbind(prf_medinc,prf_discharge,prf_evap,prf_gdp,prf_popdens,prf_prec)
 return(pdp_rf)
