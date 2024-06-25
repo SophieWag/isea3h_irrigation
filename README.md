@@ -5,7 +5,6 @@ date: October 19, 2023
 
 ---
 
-
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10012830.svg)](https://doi.org/10.5281/zenodo.10012830)
 
 
@@ -15,7 +14,6 @@ This repository contains R Code to conduct a simple statistical analysis that mo
 
 ## Data
 The data is based in the Global Historical Irrigation Dataset (HID).
-
 
 
 ![](irrigation.gif)
