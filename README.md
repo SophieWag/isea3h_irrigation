@@ -18,13 +18,9 @@ The data is based in the Global Historical Irrigation Dataset (HID).
 
 
 The data reflects the fraction of area irrigated in each grid cell between 1902 and 2005 and is based on the global Historical Irrigation Dataset (HID), developed by Siebert et al. (2015). The ISEA3H discrete global grid is constructed using the dggridR package, created by Barnes and Sahr (2017).
->>>>>>> 2493bf89c9447f0e4fb5a7f902ef33393854779c
+
 
 ![](irrigation.gif)
-
-
-
- ![irrigation.gif](irrigation.gif)
 
 
 
