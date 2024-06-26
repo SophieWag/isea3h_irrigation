@@ -1,5 +1,5 @@
 
-# Global Irrigation Expansion -- ISEA3H Grid System
+# Global Irrigation Expansion - ISEA3H Grid System
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12542249.svg)](https://doi.org/10.5281/zenodo.12542249)
 
