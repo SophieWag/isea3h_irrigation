@@ -30,7 +30,7 @@ Siebert, S., Kummu, M., Porkka, M., Döll, P., Ramankutty, N., and Scanlon, B. R
 
 Richard Barnes and Kevin Sahr (2017). dggridR: Discrete Global Grids for R. R package version 2.0.4. "https://github.com/r-barnes/dggridR/" doi:10.5281/zenodo.1322866
 
-
+Wagner, S., Stenzel, F., Krueger, T., and de Wiljes, J.: Drivers of global irrigation expansion: the role of discrete global grid choice, Hydrol. Earth Syst. Sci., 28, 5049–5068, https://doi.org/10.5194/hess-28-5049-2024, 2024.
 
 
 
